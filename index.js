@@ -21,8 +21,7 @@ function extraiLink(texto){
     while((temp = regex.exec(texto)) !== null){
         arrayResultados[temp[1]] = temp[2]
     }
-
-    console.log(arrayResultados)
+    return Object.keys(arrayResultados).length === 0 ? 'não há links' : arrayResultados;
 }
 
 function tratarErro(erro){
@@ -31,11 +30,12 @@ function tratarErro(erro){
 }
 
 // construindo a função de froma assincrona usando then
-async function pegaArquivo(caminhoDoArquivo){ //async
+// é possível exportar uma função colocando export antes dela
+export async function pegaArquivo(caminhoDoArquivo){ //async
     const encoding = 'utf-8';
     try{
         const texto = await fs.promises.readFile(caminhoDoArquivo, encoding) //await
-        console.log(extraiLink(texto))
+        return extraiLink(texto)
     } 
     catch(erro){
         tratarErro(erro)
@@ -66,5 +66,7 @@ async function pegaArquivo(caminhoDoArquivo){ //async
 //     })
 // }
 
+// pegaArquivo('./arquivos/texto1.md')
 
-pegaArquivo('./arquivos/texto1.md')
+//exportando
+// module.exports = pegaArquivo;
