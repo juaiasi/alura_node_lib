@@ -1,5 +1,6 @@
 import chalk from 'chalk' //biblioteca que foi instalada com npm install
 import fs from 'fs' //biblioteca nativa para acesso aos arquivos do sistema (files)
+// import path from 'path'
 
 // function pegaArquivo(caminhoDoArquivo){
 //     const encoding = 'utf-8'
@@ -15,11 +16,11 @@ function extraiLink(texto){
     const regex = /\[([^\]]*)\]\((http[^\)]*)\)/gm
     // const linksExtraidos = texto.match(regex) //método match é um método de string, não remove os colchetes
     // const linksExtraidos = regex.exec(texto) //só trás uma
-    const arrayResultados = {}
+    const arrayResultados = []
     let temp
 
     while((temp = regex.exec(texto)) !== null){
-        arrayResultados[temp[1]] = temp[2]
+        arrayResultados.push({[temp[1]]:temp[2]})
     }
     return Object.keys(arrayResultados).length === 0 ? 'não há links' : arrayResultados;
 }
@@ -31,6 +32,24 @@ function tratarErro(erro){
 
 // construindo a função de froma assincrona usando then
 // é possível exportar uma função colocando export antes dela
+
+// //versão que pega todos arquivos da pasta
+// export async function pegaArquivo(caminho) {
+//     const caminhoAbsoluto = path.join(__dirname, '..', caminho);
+//     const encoding = 'utf-8';
+//     try {
+//       const arquivos = await fs.promises.readdir(caminhoAbsoluto, { encoding });
+//       const result = await Promise.all(arquivos.map(async (arquivo) => {
+//         const localArquivo = `${caminhoAbsoluto}/${arquivo}`;
+//         const texto = await fs.promises.readFile(localArquivo, encoding);
+//         return extraiLinks(texto);
+//       }));
+//       return result;
+//     } catch (erro) {
+//       return trataErro(erro);
+//     }
+// }
+
 export async function pegaArquivo(caminhoDoArquivo){ //async
     const encoding = 'utf-8';
     try{
