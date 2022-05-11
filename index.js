@@ -1,4 +1,4 @@
-import chalk from 'chalk' //biblioteca que foi instalada com npm install
+// import chalk from 'chalk' //biblioteca que foi instalada com npm install
 import fs from 'fs' //biblioteca nativa para acesso aos arquivos do sistema (files)
 // import path from 'path'
 
@@ -27,7 +27,7 @@ function extraiLink(texto){
 
 function tratarErro(erro){
     // lança novo erro          //código do erro, mas não precisa do .code (mas abrevia)
-    throw new Error(chalk.red(erro.code,'não há arquivo no caminho'))
+    throw new Error(erro.code,'não há arquivo no caminho')
 }
 
 // construindo a função de froma assincrona usando then

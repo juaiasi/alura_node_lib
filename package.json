@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "jest_init": "jest --init",
     "cli": "node cli.js ./arquivos/texto1.md",
     "comentario": "sempre que eu escrever 'npm run cli', ele vai rodar o comando acima (da chave cli)"
   },
@@ -12,8 +13,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^5.0.1",
     "node-fetch": "^3.2.4"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "babel-jest": "^28.1.0",
+    "jest": "^28.1.0"
+  }
 }

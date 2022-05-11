@@ -1,6 +1,6 @@
 import {pegaArquivo} from './index.js'
 import {validaUrl} from './http-validacao.js'
-import chalk from 'chalk' //biblioteca que foi instalada com npm install
+// import chalk from 'chalk' //biblioteca que foi instalada com npm install
 
 // comand line interface - imput de comandos
 // apenas exibe as informações na interface
@@ -13,9 +13,9 @@ const caminho = process.argv
 async function processaTexto(caminhoDoArquivo){
     const resultado = await pegaArquivo(caminhoDoArquivo[2])
     if(caminhoDoArquivo[3] === 'validar'){
-        console.log(chalk.yellow('Links validados'),await validaUrl(resultado))
+        console.log('Links validados',await validaUrl(resultado))
     } else{
-    console.log(chalk.yellow('Lista de links'),resultado)
+    console.log('Lista de links',resultado)
     }
 }
 
