@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import {pegaArquivo} from './index.js'
 import {validaUrl} from './http-validacao.js'
 // import chalk from 'chalk' //biblioteca que foi instalada com npm install

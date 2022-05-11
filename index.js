@@ -26,8 +26,11 @@ function extraiLink(texto){
 }
 
 function tratarErro(erro){
-    // lança novo erro          //código do erro, mas não precisa do .code (mas abrevia)
-    throw new Error(erro.code,'não há arquivo no caminho')
+    // lança novo erro          
+    throw new Error('não há arquivo no caminho')
+    
+                        //código do erro, mas não precisa do .code (mas abrevia)
+    // throw new Error(erro.code,'não há arquivo no caminho')
 }
 
 // construindo a função de froma assincrona usando then

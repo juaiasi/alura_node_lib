@@ -15,6 +15,15 @@ describe('pegaArquivo::', () => {
         const resultado = await pegaArquivo('/mnt/c/workspace/cursos/alura_node_lib/test/arquivos/texto1.md')
         expect(resultado).toEqual(arrayResult) //compara duas coisas se são iguais
     })
+    it('deve retornar mensagem "não há links"', async () => {
+        const resultado = await pegaArquivo('/mnt/c/workspace/cursos/alura_node_lib/test/arquivos/texto1_semlink.md')
+        expect(resultado).toBe('não há links') //compara duas coisas se são iguais
+    })
+    it('deve lançar um erro na falta de arquivo', async () => {
+        await expect(pegaArquivo('/mnt/c/workspace/cursos/alura_node_lib/test/arquivos'))
+            .rejects
+            .toThrow(/não há arquivo no caminho/) //compara duas coisas se são iguais
+    })
 })
 
 // describe('pegaArquivo::', () => {
